@@ -1,4 +1,8 @@
-[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+if [[ $OSTYPE == darwin* ]]; then
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+else
+    [[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
+fi
 
 
 export LSCOLORS=
