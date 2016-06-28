@@ -1,5 +1,5 @@
-alias nzgp='source ~/.oh-my-zsh/custom/themes/taat-nzgp.zsh-theme'
-alias zgp='source ~/.oh-my-zsh/custom/themes/taat.zsh-theme'
+alias nzgp='source $ZSH_CUSTOM/themes/taat-nzgp.zsh-theme'
+alias zgp='source $ZSH_CUSTOM/themes/taat.zsh-theme'
 
 
 prompt_git() {

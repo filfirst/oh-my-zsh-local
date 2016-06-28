@@ -1,5 +1,5 @@
-alias nzgp='source ~/.oh-my-zsh/custom/themes/filfirst-nzgp.zsh-theme'
-alias zgp='source ~/.oh-my-zsh/custom/themes/filfirst.zsh-theme'
+alias nzgp='source $ZSH_CUSTOM/themes/filfirst-nzgp.zsh-theme'
+alias zgp='source $ZSH_CUSTOM/themes/filfirst.zsh-theme'
 
 
 () {
