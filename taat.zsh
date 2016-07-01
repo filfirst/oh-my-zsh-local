@@ -8,9 +8,7 @@ fi
 export LSCOLORS=
 
 
-#alias cp='cp -i'
-#alias mv='mv -i'
-#alias rm='rm -i'
+alias n='echo -n ""'
 
 
 if [[ $OSTYPE == darwin* ]]; then
