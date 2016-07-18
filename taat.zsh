@@ -46,5 +46,10 @@ if [[ $OSTYPE == darwin* ]]; then
 fi
 
 
+if [[ $OSTYPE == linux* ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
+
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
