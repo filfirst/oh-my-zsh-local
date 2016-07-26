@@ -1,17 +1,17 @@
-alias nzgp='source $ZSH_CUSTOM/themes/taat-nzgp.zsh-theme'
-alias zgp='source $ZSH_CUSTOM/themes/taat.zsh-theme'
+alias nzgp='source $ZSH_CUSTOM/themes/atta-nzgp.zsh-theme'
+alias zgp='source $ZSH_CUSTOM/themes/atta.zsh-theme'
 
 
 prompt_git() {
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        git_fg_color='%{%F{6}%}'
+        git_fg_color='%{%F{224}%}'
 
         dirty=$(parse_git_dirty)
 
         if [[ -n $dirty ]]; then
-            git_status_fg_color='%{%F{1}%}'
+            git_status_fg_color='%{%F{196}%}'
         else
-            git_status_fg_color='%{%F{4}%}'
+            git_status_fg_color='%{%F{39}%}'
         fi
 
         git_status=$(git_prompt_status)
@@ -28,9 +28,9 @@ prompt_git() {
 prompt_status() {
     local symbols
     symbols=()
-    [[ $RETVAL -ne 0 ]] && symbols+="%{%F{1}%}[$RETVAL]"
-    [[ $UID -eq 0 ]] && symbols+="%{%F{5}%}#"
-    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{12}%}&"
+    [[ $RETVAL -ne 0 ]] && symbols+="%{%F{196}%}[$RETVAL]"
+    [[ $UID -eq 0 ]] && symbols+="%{%F{226}%}#"
+    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{224}%}&"
 
     [[ -n "$symbols" ]] && echo -n "$symbols "
 }
@@ -39,9 +39,9 @@ prompt_status() {
 build_prompt() {
     RETVAL=$?
     prompt_status
-    echo -n '%{%F{6}%}%n%{%F{3}%}@%{%F{6}%}%m%{%F{3}%}:%{%F{12}%}%1~%{%f%}'
+    echo -n '%{%F{51}%}%n%{%F{227}%}@%{%F{147}%}%m%{%F{227}%}:%{%F{216}%}%1~%{%f%}'
     prompt_git
-    echo -n '%{%F{3}%}%{%k%}%(!.#.%%)%{%f%} '
+    echo -n '%{%F{227}%}%{%k%}%(!.#.%%)%{%f%} '
 }
 
 
@@ -53,16 +53,16 @@ ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
 
 ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{%F{1}%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{%F{196}%}"
 
-ZSH_THEME_GIT_PROMPT_AHEAD="%{%F{4}%}>"
-ZSH_THEME_GIT_PROMPT_BEHIND="%{%F{1}%}<"
-ZSH_THEME_GIT_PROMPT_ADDED="%{%F{4}%}+"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{%F{3}%}*"
-ZSH_THEME_GIT_PROMPT_DELETED="%{%F{1}%}-"
-ZSH_THEME_GIT_PROMPT_RENAMED="%{%F{5}%}="
-ZSH_THEME_GIT_PROMPT_UNMERGED="%{%F{1}%}!"
-ZSH_THEME_GIT_PROMPT_UNTRACKED="%{%F{3}%}?"
+ZSH_THEME_GIT_PROMPT_AHEAD="%{%F{227}%}>"
+ZSH_THEME_GIT_PROMPT_BEHIND="%{%F{196}%}<"
+ZSH_THEME_GIT_PROMPT_ADDED="%{%F{46}%}+"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{%F{75}%}*"
+ZSH_THEME_GIT_PROMPT_DELETED="%{%F{196}%}-"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{%F{207}%}="
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{%F{227}%}!"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{%F{216}%}?"
 
 
 zgphelp() {
