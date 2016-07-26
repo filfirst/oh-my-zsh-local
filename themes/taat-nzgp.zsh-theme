@@ -16,7 +16,7 @@ prompt_status() {
 build_prompt() {
     RETVAL=$?
     prompt_status
-    echo -n '%{%F{6}%}%n%{%F{3}%}@%{%F{6}%}%m%{%F{3}%}:%{%F{12}%}%1~%{%f%}'
+    echo -n '%{%F{6}%}%n%{%F{3}%}@%{%F{12}%}%m%{%F{3}%}:%{%F{209}%}%1~%{%f%}'
     echo -n '%{%F{3}%}%{%k%}%(!.#.%%)%{%f%} '
 }
 
