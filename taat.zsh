@@ -43,13 +43,18 @@ if [[ $OSTYPE == darwin* ]]; then
 
     # For Haskell
     export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+    # For Node.js
+    which npm >> /dev/null
+    if [ $? = 0 ]; then
+        alias lnpm="node --max-old-space-size=8192 /usr/local/bin/npm"
+    fi
 fi
 
 
 if [[ $OSTYPE == linux* ]]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
-
 
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
