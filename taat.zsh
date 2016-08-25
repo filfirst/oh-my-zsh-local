@@ -43,12 +43,21 @@ if [[ $OSTYPE == darwin* ]]; then
 
     # For Haskell
     export PATH="$HOME/Library/Haskell/bin:$PATH"
+fi
 
-    # For Node.js
-    which npm >> /dev/null
-    if [ $? = 0 ]; then
-        alias lnpm="node --max-old-space-size=8192 /usr/local/bin/npm"
-    fi
+
+# For Node.js
+which npm >> /dev/null
+if [ $? = 0 ]; then
+    alias lnpm="node --max-old-space-size=8192 /usr/local/bin/npm"
+fi
+
+
+# For vim YouCompleteMe python part
+if [ -d "$HOME/.vim/bundle/YouCompleteMe" ]; then
+    alias vimb="vim -c 'let g:ycm_python_binary_path=\"python\"'"
+    alias gvimb="gvim -c 'let g:ycm_python_binary_path=\"python\"'"
+    alias mvimb="mvim -c 'let g:ycm_python_binary_path=\"python\"'"
 fi
 
 
