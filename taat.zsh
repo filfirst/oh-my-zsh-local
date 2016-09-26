@@ -17,10 +17,10 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH=/usr/local/sbin:$PATH
 
     # For Qt
-    #export QTDIR=/usr/local/opt/qt5
+    #export QTDIR=/Applications/Qt/5.7/clang_64
     #export PATH=$QTDIR/bin:$PATH
     #export CMAKE_PREFIX_PATH=$QTDIR/lib/cmake:$CMAKE_PREFIX_PATH
-    export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/lib/cmake:$CMAKE_PREFIX_PATH
+    #export CMAKE_PREFIX_PATH=/usr/local/opt/qt5/lib/cmake:$CMAKE_PREFIX_PATH
 
     # For $HOME/bin
     export PATH=$PATH:$HOME/bin
