@@ -21,9 +21,6 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH=$QTDIR/bin:$PATH
     export CMAKE_PREFIX_PATH=$QTDIR/lib/cmake:$CMAKE_PREFIX_PATH
 
-    # For $HOME/bin
-    export PATH=$PATH:$HOME/bin
-
     # For Scala
     export SCALA_HOME=/usr/local/opt/scala/libexec
 
@@ -62,7 +59,12 @@ fi
 
 if [[ $OSTYPE == linux* ]]; then
     export PATH="$HOME/.local/bin:$PATH"
+    # For Swift
+    export PATH=/opt/swift/usr/bin:$PATH
 fi
+
+# For $HOME/bin
+export PATH=$PATH:$HOME/bin
 
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
