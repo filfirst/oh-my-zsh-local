@@ -19,7 +19,7 @@ if [[ $OSTYPE == darwin* ]]; then
     # For Qt
     export QTDIR=/usr/local/opt/qt5
     export PATH=$QTDIR/bin:$PATH
-    export CMAKE_PREFIX_PATH=$QTDIR/lib/cmake:$CMAKE_PREFIX_PATH
+    export CMAKE_PREFIX_PATH=$QTDIR:$CMAKE_PREFIX_PATH
 
     # For Scala
     export SCALA_HOME=/usr/local/opt/scala/libexec
