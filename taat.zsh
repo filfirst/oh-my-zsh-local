@@ -51,9 +51,12 @@ fi
 
 # For vim YouCompleteMe python part
 if [ -d "$HOME/.vim/bundle/YouCompleteMe" ]; then
-    alias vimb="vim -c 'let g:ycm_python_binary_path=\"python\"'"
-    alias gvimb="gvim -c 'let g:ycm_python_binary_path=\"python\"'"
-    alias mvimb="mvim -c 'let g:ycm_python_binary_path=\"python\"'"
+    alias vim3="vim -c 'let g:ycm_python_binary_path=\"python3\"'"
+    alias gvim3="gvim -c 'let g:ycm_python_binary_path=\"python3\"'"
+    alias mvim3="mvim -c 'let g:ycm_python_binary_path=\"python3\"'"
+    alias vim2="vim -c 'let g:ycm_python_binary_path=\"python2\"'"
+    alias gvim2="gvim -c 'let g:ycm_python_binary_path=\"python2\"'"
+    alias mvim2="mvim -c 'let g:ycm_python_binary_path=\"python2\"'"
 fi
 
 
