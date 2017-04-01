@@ -34,8 +34,8 @@ if [[ $OSTYPE == darwin* ]]; then
     export GOPATH=$HOME/opt/go
 
     # For Cuda
-    #export PATH=/Developer/NVIDIA/CUDA-7.0/bin:$PATH
-    #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-7.0/lib:$DYLD_LIBRARY_PATH
+    #export PATH=/Developer/NVIDIA/CUDA-8.0/bin${PATH:+:${PATH}}
+    #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
 
     # For Haskell
     export PATH="$HOME/Library/Haskell/bin:$PATH"
