@@ -17,9 +17,15 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH=/usr/local/sbin:$PATH
 
     # For Qt
-    export QTDIR=/usr/local/opt/qt5
+    export QTDIR=/usr/local/opt/qt
     export PATH=$QTDIR/bin:$PATH
     export CMAKE_PREFIX_PATH=$QTDIR:$CMAKE_PREFIX_PATH
+    alias assistant="open $QTDIR/libexec/Assistant.app"
+    alias designer="open $QTDIR/libexec/Designer.app"
+    alias linguist="open $QTDIR/libexec/Linguist.app"
+    alias pixeltool="open $QTDIR/libexec/pixeltool.app"
+    alias qdbusviewer="open $QTDIR/libexec/qdbusviewer.app"
+    alias qml="open $QTDIR/libexec/qml.app"
 
     # For Scala
     export SCALA_HOME=/usr/local/opt/scala/libexec
