@@ -35,6 +35,16 @@ if [[ $OSTYPE == darwin* ]]; then
         alias rapp="open /usr/local/opt/r-gui/R.app"
     fi
 
+    # For Graphviz
+    if [ -d "/usr/local/opt/graphviz/Graphviz.app" ]; then
+        alias graphvizapp="open /usr/local/opt/graphviz/Graphviz.app"
+    fi
+
+    # For wxMaxima
+    if [ -d "/usr/local/opt/wxmaxima/wxMaxima.app" ]; then
+        alias wxmaximaapp="open /usr/local/opt/wxmaxima/wxMaxima.app"
+    fi
+
     # For Scala
     if [ -d "/usr/local/opt/scala" ]; then
         export SCALA_HOME=/usr/local/opt/scala/libexec
