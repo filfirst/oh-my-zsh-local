@@ -11,58 +11,86 @@ export LSCOLORS=
 alias n='echo -n ""'
 
 
+# For MacOS
 if [[ $OSTYPE == darwin* ]]; then
     # For Homebrew
     HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
     export PATH=/usr/local/sbin:$PATH
 
     # For Qt
-    export QTDIR=/usr/local/opt/qt
-    export PATH=$QTDIR/bin:$PATH
-    export CMAKE_PREFIX_PATH=$QTDIR:$CMAKE_PREFIX_PATH
-    alias assistant="open $QTDIR/libexec/Assistant.app"
-    alias designer="open $QTDIR/libexec/Designer.app"
-    alias linguist="open $QTDIR/libexec/Linguist.app"
-    alias pixeltool="open $QTDIR/libexec/pixeltool.app"
-    alias qdbusviewer="open $QTDIR/libexec/qdbusviewer.app"
-    alias qml="open $QTDIR/libexec/qml.app"
+    if [ -d "/usr/local/opt/qt" ]; then
+        export QTDIR=/usr/local/opt/qt
+        export PATH=$QTDIR/bin:$PATH
+        export CMAKE_PREFIX_PATH=$QTDIR:$CMAKE_PREFIX_PATH
+        alias assistant="open $QTDIR/libexec/Assistant.app"
+        alias designer="open $QTDIR/libexec/Designer.app"
+        alias linguist="open $QTDIR/libexec/Linguist.app"
+        alias pixeltool="open $QTDIR/libexec/pixeltool.app"
+        alias qdbusviewer="open $QTDIR/libexec/qdbusviewer.app"
+        alias qml="open $QTDIR/libexec/qml.app"
+    fi
+
+    # For R
+    if [ -d "/usr/local/opt/r-gui/R.app" ]; then
+        alias rapp="open /usr/local/opt/r-gui/R.app"
+    fi
 
     # For Scala
-    export SCALA_HOME=/usr/local/opt/scala/libexec
+    if [ -d "/usr/local/opt/scala" ]; then
+        export SCALA_HOME=/usr/local/opt/scala/libexec
+    fi
 
     # For Groovy
-    export GROOVY_HOME=/usr/local/opt/groovy/libexec
+    if [ -d "/usr/local/opt/groovy" ]; then
+        export GROOVY_HOME=/usr/local/opt/groovy/libexec
+    fi
 
     # For Gradle
-    export GRADLE_HOME=/usr/local/opt/gradle/libexec
+    if [ -d "/usr/local/opt/gradle" ]; then
+        export GRADLE_HOME=/usr/local/opt/gradle/libexec
+    fi
 
     # For Go
-    export GOPATH=$HOME/opt/go
+    if [ -d "$HOME/opt/go" ]; then
+        export GOPATH=$HOME/opt/go
+    fi
 
     # For Cuda
     #export PATH=/Developer/NVIDIA/CUDA-8.0/bin${PATH:+:${PATH}}
     #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
 
     # For Haskell
-    export PATH="$HOME/Library/Haskell/bin:$PATH"
+    if [ -d "$HOME/Library/Haskell" ]; then
+        export PATH="$HOME/Library/Haskell/bin:$PATH"
+    fi
+fi
+
+
+# For Linux
+if [[ $OSTYPE == linux* ]]; then
+    # For Swift
+    if [ -d "/opt/swift" ]; then
+        export PATH=/opt/swift/usr/bin:$PATH
+    fi
 fi
 
 
 # For Node.js
 which npm >> /dev/null
 if [ $? = 0 ]; then
-    alias lnpm="node --max-old-space-size=8192 /usr/local/bin/npm"
+    alias lnpm="node --max-old-space-size=8192 $(which npm)"
 fi
 
 
-if [[ $OSTYPE == linux* ]]; then
+# For user bin paths
+if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
-    # For Swift
-    export PATH=/opt/swift/usr/bin:$PATH
 fi
 
-# For $HOME/bin
-export PATH=$PATH:$HOME/bin
+if [ -d "$HOME/bin" ]; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
 
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
