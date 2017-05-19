@@ -78,6 +78,11 @@ fi
 
 # For Linux
 if [[ $OSTYPE == linux* ]]; then
+    # For CMake
+    if [ -d "/opt/cmake" ]; then
+        export PATH=/opt/cmake/bin:$PATH
+    fi
+
     # For Swift
     if [ -d "/opt/swift" ]; then
         export PATH=/opt/swift/usr/bin:$PATH
