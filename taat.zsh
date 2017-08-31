@@ -109,3 +109,14 @@ fi
 
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
+
+# For zsh syntax highlighting
+if [[ $OSTYPE == darwin* ]]; then
+    if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+elif [[ $OSTYPE == linux* ]]; then
+    if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+fi
