@@ -96,6 +96,16 @@ if [ $? = 0 ]; then
     alias lnpm="node --max-old-space-size=8192 $(which npm)"
 fi
 
+#
+#for Rust
+if [[ -d "$HOME/.cargo/bin" ]]; then
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
+if [[ -d "$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src" ]]; then
+    export RUST_SRC_PATH="$HOME/.rustup/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src"
+fi
+
 
 # For user bin paths
 if [ -d "$HOME/.local/bin" ]; then
@@ -109,6 +119,7 @@ fi
 
 # For Ansible
 export ANSIBLE_HOSTS=$HOME/.ansible_hosts
+
 
 # For zsh syntax highlighting
 if [[ $OSTYPE == darwin* ]]; then
