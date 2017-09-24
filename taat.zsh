@@ -65,10 +65,6 @@ if [[ $OSTYPE == darwin* ]]; then
         export GOPATH=$HOME/opt/go
     fi
 
-    # For Cuda
-    #export PATH=/Developer/NVIDIA/CUDA-8.0/bin${PATH:+:${PATH}}
-    #export DYLD_LIBRARY_PATH=/Developer/NVIDIA/CUDA-8.0/lib${DYLD_LIBRARY_PATH:+:${DYLD_LIBRARY_PATH}}
-
     # For Haskell
     if [ -d "$HOME/Library/Haskell" ]; then
         export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -104,20 +100,4 @@ fi
 
 if [ -d "$HOME/bin" ]; then
     export PATH="$HOME/bin:$PATH"
-fi
-
-
-# For Ansible
-export ANSIBLE_HOSTS=$HOME/.ansible_hosts
-
-
-# For zsh syntax highlighting
-if [[ $OSTYPE == darwin* ]]; then
-    if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    fi
-elif [[ $OSTYPE == linux* ]]; then
-    if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-        source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    fi
 fi
