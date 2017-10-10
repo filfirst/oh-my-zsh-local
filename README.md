@@ -2,6 +2,7 @@
 
 * Clone this repository
 ```bash
+cd $HOME
 git clone https://github.com/filfirst/oh-my-zsh-local.git .oh-my-zsh.local
 ```
 
