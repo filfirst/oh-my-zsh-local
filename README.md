@@ -16,4 +16,4 @@ ZSH_THEME="taat"
 ZSH_CUSTOM=$HOME/.oh-my-zsh.local
 ```
 
-* For Homebrew, search Homebrew in $HOME/oh-my-zsh.local
+* For Homebrew, search Homebrew in $HOME/.oh-my-zsh.local
