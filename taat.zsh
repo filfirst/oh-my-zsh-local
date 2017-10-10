@@ -63,6 +63,7 @@ if [[ $OSTYPE == darwin* ]]; then
     # For Go
     if [ -d "$HOME/opt/go" ]; then
         export GOPATH=$HOME/opt/go
+        export PATH="${GOPATH//://bin:}/bin:$PATH"
     fi
 
     # For Haskell
