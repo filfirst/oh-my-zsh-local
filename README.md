@@ -15,3 +15,5 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 ZSH_THEME="taat"
 ZSH_CUSTOM=$HOME/.oh-my-zsh.local
 ```
+
+* For Homebrew, search Homebrew in $HOME/oh-my-zsh.local
