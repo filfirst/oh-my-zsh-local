@@ -63,7 +63,7 @@ if [[ $OSTYPE == darwin* ]]; then
     # For Go
     if [ -d "$HOME/opt/go" ]; then
         export GOPATH=$HOME/opt/go
-        export PATH="${GOPATH//://bin:}/bin:$PATH"
+        export PATH="$PATH:${GOPATH//://bin:}/bin"
     fi
 
     # For Haskell
@@ -84,13 +84,6 @@ if [[ $OSTYPE == linux* ]]; then
     if [ -d "/opt/swift" ]; then
         export PATH=/opt/swift/usr/bin:$PATH
     fi
-fi
-
-
-# For Node.js
-which npm >> /dev/null
-if [ $? = 0 ]; then
-    alias lnpm="node --max-old-space-size=8192 $(which npm)"
 fi
 
 
