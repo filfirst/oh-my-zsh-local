@@ -30,6 +30,15 @@ if [[ $OSTYPE == darwin* ]]; then
         alias qml="open $QTDIR/libexec/qml.app"
     fi
 
+    # For Python
+    if [ -d "$HOME/Library/Python/2.7" ]; then
+        export PATH="$HOME/Library/Python/2.7/bin:$PATH"
+    fi
+
+    if [ -d "$HOME/Library/Python/3.6" ]; then
+        export PATH="$HOME/Library/Python/3.6/bin:$PATH"
+    fi
+
     # For R
     if [ -d "/usr/local/opt/r-gui/R.app" ]; then
         alias rapp="open /usr/local/opt/r-gui/R.app"
