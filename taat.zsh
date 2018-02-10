@@ -11,13 +11,13 @@ export LSCOLORS=
 alias n='echo -n ""'
 
 
-# For MacOS
+# MacOS
 if [[ $OSTYPE == darwin* ]]; then
-    # For Homebrew
+    # Homebrew
     HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
     export PATH=/usr/local/sbin:$PATH
 
-    # For Qt
+    # Qt
     if [ -d "/usr/local/opt/qt" ]; then
         export QTDIR=/usr/local/opt/qt
         export PATH=$QTDIR/bin:$PATH
@@ -30,7 +30,7 @@ if [[ $OSTYPE == darwin* ]]; then
         alias qml="open $QTDIR/libexec/qml.app"
     fi
 
-    # For Python
+    # Python
     if [ -d "$HOME/Library/Python/2.7" ]; then
         export PATH="$HOME/Library/Python/2.7/bin:$PATH"
     fi
@@ -39,64 +39,70 @@ if [[ $OSTYPE == darwin* ]]; then
         export PATH="$HOME/Library/Python/3.6/bin:$PATH"
     fi
 
-    # For R
+    # R
     if [ -d "/usr/local/opt/r-gui/R.app" ]; then
         alias rapp="open /usr/local/opt/r-gui/R.app"
     fi
 
-    # For Graphviz
+    # Graphviz
     if [ -d "/usr/local/opt/graphviz/Graphviz.app" ]; then
         alias graphvizapp="open /usr/local/opt/graphviz/Graphviz.app"
     fi
 
-    # For wxMaxima
+    # wxMaxima
     if [ -d "/usr/local/opt/wxmaxima/wxMaxima.app" ]; then
         alias wxmaximaapp="open /usr/local/opt/wxmaxima/wxMaxima.app"
     fi
 
-    # For Scala
+    # Scala
     if [ -d "/usr/local/opt/scala" ]; then
         export SCALA_HOME=/usr/local/opt/scala/libexec
     fi
 
-    # For Groovy
+    # Groovy
     if [ -d "/usr/local/opt/groovy" ]; then
         export GROOVY_HOME=/usr/local/opt/groovy/libexec
     fi
 
-    # For Gradle
+    # Gradle
     if [ -d "/usr/local/opt/gradle" ]; then
         export GRADLE_HOME=/usr/local/opt/gradle/libexec
     fi
 
-    # For Go
-    if [ -d "$HOME/opt/go" ]; then
-        export GOPATH=$HOME/opt/go
-        export PATH="$PATH:${GOPATH//://bin:}/bin"
-    fi
-
-    # For Haskell
+    # Haskell
     if [ -d "$HOME/Library/Haskell" ]; then
         export PATH="$HOME/Library/Haskell/bin:$PATH"
     fi
 fi
 
 
-# For Linux
+# Linux
 if [[ $OSTYPE == linux* ]]; then
-    # For CMake
+    # CMake
     if [ -d "/opt/cmake" ]; then
         export PATH=/opt/cmake/bin:$PATH
     fi
 
-    # For Swift
+    # Swift
     if [ -d "/opt/swift" ]; then
         export PATH=/opt/swift/usr/bin:$PATH
+    fi
+
+    # Go
+    if [ -d "/opt/go" ]; then
+        export PATH=/opt/go/bin:$PATH
     fi
 fi
 
 
-# For user bin paths
+# Go
+if [ -d "$HOME/opt/go" ]; then
+    export GOPATH=$HOME/opt/go
+    export PATH="$PATH:${GOPATH//://bin:}/bin"
+fi
+
+
+# User bin paths
 if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
