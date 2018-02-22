@@ -90,8 +90,7 @@ if [[ $OSTYPE == linux* ]]; then
 
     # Go
     if [ -d "/opt/go" ]; then
-        export GOROOT=/opt/go
-        export PATH=$GOROOT/bin:$PATH
+        export PATH=/opt/go/bin:$PATH
     fi
 fi
 
