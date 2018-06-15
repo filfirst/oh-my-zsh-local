@@ -101,6 +101,11 @@ if [ -d "$HOME/opt/go" ]; then
     export PATH="$PATH:${GOPATH//://bin:}/bin"
 fi
 
+# Node
+if [ -d "$HOME/opt/node" ]; then
+    export PATH=$HOME/opt/node/bin:$PATH
+fi
+
 
 # User bin paths
 if [ -d "$HOME/.local/bin" ]; then
