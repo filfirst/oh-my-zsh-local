@@ -92,6 +92,11 @@ if [[ $OSTYPE == linux* ]]; then
     if [ -d "/opt/go" ]; then
         export PATH=/opt/go/bin:$PATH
     fi
+
+    # Node
+    if [ -d "/opt/node" ]; then
+        export PATH=/opt/node/bin:$PATH
+    fi
 fi
 
 
