@@ -35,8 +35,8 @@ if [[ $OSTYPE == darwin* ]]; then
         export PATH="$HOME/Library/Python/2.7/bin:$PATH"
     fi
 
-    if [ -d "$HOME/Library/Python/3.6" ]; then
-        export PATH="$HOME/Library/Python/3.6/bin:$PATH"
+    if [ -d "$HOME/Library/Python/3.7" ]; then
+        export PATH="$HOME/Library/Python/3.7/bin:$PATH"
     fi
 
     # R
