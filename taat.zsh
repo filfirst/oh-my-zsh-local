@@ -103,7 +103,7 @@ fi
 # Go
 if [ -d "$HOME/opt/go" ]; then
     export GOPATH=$HOME/opt/go
-    export PATH="$PATH:${GOPATH//://bin:}/bin"
+    export PATH="${GOPATH//://bin:}/bin:$PATH"
 fi
 
 # Node
