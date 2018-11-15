@@ -5,9 +5,9 @@ alias zgp='source $ZSH_CUSTOM/themes/taat.zsh-theme'
 prompt_status() {
     local symbols
     symbols=()
-    [[ $RETVAL -ne 0 ]] && symbols+="%{%F{196}%}[$RETVAL]"
-    [[ $UID -eq 0 ]] && symbols+="%{%F{165}%}#"
-    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{215}%}&"
+    [[ $RETVAL -ne 0 ]] && symbols+="%{%F{1}%}[$RETVAL]"
+    [[ $UID -eq 0 ]] && symbols+="%{%F{5}%}#"
+    [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{12}%}&"
 
     [[ -n "$symbols" ]] && echo -n "$symbols "
 }
@@ -16,12 +16,9 @@ prompt_status() {
 build_prompt() {
     RETVAL=$?
     prompt_status
-    #echo -n '%{%F{45}%}%n%{%F{109}%}@%{%F{33}%}%m%{%F{109}%}:%{%F{215}%}%1~%{%f%}'
-    echo -n '%{%F{39}%}%n%{%F{141}%}@%{%F{33}%}%m%{%F{141}%}:%{%F{215}%}%1~%{%f%}'
-    #echo -n '%{%F{45}%}%{%k%}%(!.#.%%)%{%f%} '
-    echo -n '%{%F{39}%}%{%k%}%(!.#.%%)%{%f%} '
+    echo -n '%B%{%F{6}%}%n@%m%{%f%b%k%}:%B%{%F{12}%}%1~%{%f%b%k%}'
+    echo -n '%{%f%b%k%}%(!.#.%%)%{%f%b%k%} '
 }
 
 
 PROMPT='%{%f%b%k%}$(build_prompt)'
-#RPROMPT='%{%F{3}%}[%*]%{%f%}'
