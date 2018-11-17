@@ -39,7 +39,7 @@ prompt_status() {
 build_prompt() {
     RETVAL=$?
     prompt_status
-    echo -n '%B%{%F{6}%}%n@%m%{%f%b%k%}:%B%{%F{12}%}%1~%{%f%b%k%}'
+    echo -n '%B%{%F{6}%}%n@%m%{%f%b%k%}:%B%{%F{172}%}%1~%{%f%b%k%}'
     prompt_git
     echo -n '%{%f%b%k%}%(!.#.%%)%{%f%b%k%} '
 }
