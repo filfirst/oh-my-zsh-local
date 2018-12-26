@@ -14,7 +14,9 @@ alias n='echo -n ""'
 # MacOS
 if [[ $OSTYPE == darwin* ]]; then
     # Homebrew
-    HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
+    if [ -f $HOME/.homebrew_github_api_token ]; then
+        HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
+    fi
     export PATH=/usr/local/sbin:$PATH
 
     # Qt
