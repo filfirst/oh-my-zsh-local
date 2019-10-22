@@ -1,10 +1,3 @@
-if [[ $OSTYPE == darwin* ]]; then
-    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
-else
-    [[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
-fi
-
-
 export LSCOLORS=
 
 
@@ -18,6 +11,16 @@ if [[ $OSTYPE == darwin* ]]; then
         HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
     fi
     export PATH=/usr/local/sbin:$PATH
+
+    # zsh-syntax-highlighting
+    if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+
+    # zsh-autosuggestions
+    if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fi
 
     # Qt
     if [ -d "/usr/local/opt/qt" ]; then
@@ -80,6 +83,11 @@ fi
 
 # Linux
 if [[ $OSTYPE == linux* ]]; then
+    # zsh-syntax-highlighting
+    if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    fi
+
     # CMake
     if [ -d "/opt/cmake" ]; then
         export PATH=/opt/cmake/bin:$PATH
