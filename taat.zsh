@@ -15,6 +15,7 @@ if [[ $OSTYPE == darwin* ]]; then
     # zsh-syntax-highlighting
     if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
     fi
 
     # zsh-autosuggestions
