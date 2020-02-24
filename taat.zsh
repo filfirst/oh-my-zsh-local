@@ -83,6 +83,7 @@ if [[ $OSTYPE == linux* ]]; then
     # zsh-syntax-highlighting
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
     fi
 
     # CMake
