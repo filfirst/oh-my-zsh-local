@@ -110,8 +110,13 @@ fi
 
 # Go
 if [ -d "$HOME/opt/go" ]; then
-    export GOPATH=$HOME/opt/go
-    export PATH="${GOPATH//://bin:}/bin:$PATH"
+    if [ -z "${GOPATH}" ]; then
+        export GOPATH=$HOME/opt/go
+    fi
+fi
+
+if type "go" > /dev/null; then
+    export PATH="${${$(go env GOPATH)}//://bin:}/bin:$PATH"
 fi
 
 # Node
