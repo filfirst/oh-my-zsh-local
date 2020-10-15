@@ -12,15 +12,15 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
     export PATH=/usr/local/sbin:$PATH
 
+    # zsh-autosuggestions
+    if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fi
+
     # zsh-syntax-highlighting
     if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
-    fi
-
-    # zsh-autosuggestions
-    if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     fi
 
     # Qt
@@ -80,6 +80,11 @@ fi
 
 # Linux
 if [[ $OSTYPE == linux* ]]; then
+    # zsh-autosuggestions
+    if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+        source /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    fi
+
     # zsh-syntax-highlighting
     if [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
