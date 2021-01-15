@@ -41,19 +41,10 @@ if [[ $OSTYPE == darwin* ]]; then
         export PATH="$HOME/Library/Python/3.9/bin:$PATH"
     fi
 
-    # R
-    if [ -d "/usr/local/opt/r-gui/R.app" ]; then
-        alias rapp="open /usr/local/opt/r-gui/R.app"
-    fi
-
-    # Graphviz
-    if [ -d "/usr/local/opt/graphviz/Graphviz.app" ]; then
-        alias graphvizapp="open /usr/local/opt/graphviz/Graphviz.app"
-    fi
-
-    # wxMaxima
-    if [ -d "/usr/local/opt/wxmaxima/wxMaxima.app" ]; then
-        alias wxmaximaapp="open /usr/local/opt/wxmaxima/wxMaxima.app"
+    # Java
+    /usr/libexec/java_home > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
     fi
 
     # Scala
