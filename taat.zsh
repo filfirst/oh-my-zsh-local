@@ -7,19 +7,31 @@ alias n='echo -n ""'
 # MacOS
 if [[ $OSTYPE == darwin* ]]; then
     # Homebrew
+    if [ -d "/opt/homebrew/bin" ]; then
+        export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+        FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+    fi
+
     if [ -f $HOME/.homebrew_github_api_token ]; then
         HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
     fi
-    export PATH=/usr/local/sbin:$PATH
+
+    # Additional path
+    export PATH="/usr/local/sbin:$PATH"
 
     # zsh-autosuggestions
     if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
         source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+    elif [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+        source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     fi
 
     # zsh-syntax-highlighting
     if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+        ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
+    elif [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+        source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
     fi
 
@@ -37,16 +49,22 @@ if [[ $OSTYPE == darwin* ]]; then
     # Scala
     if [ -d "/usr/local/opt/scala" ]; then
         export SCALA_HOME=/usr/local/opt/scala/libexec
+    elif [ -d "/opt/homebrew/opt/scala" ]; then
+        export SCALA_HOME=/opt/homebrew/opt/scala/libexec
     fi
 
     # Groovy
     if [ -d "/usr/local/opt/groovy" ]; then
         export GROOVY_HOME=/usr/local/opt/groovy/libexec
+    elif [ -d "/opt/homebrew/opt/groovy" ]; then
+        export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
     fi
 
     # Gradle
     if [ -d "/usr/local/opt/gradle" ]; then
         export GRADLE_HOME=/usr/local/opt/gradle/libexec
+    elif [ -d "/opt/homebrew/opt/gradle" ]; then
+        export GRADLE_HOME=/opt/homebrew/opt/gradle/libexec
     fi
 
     # Haskell
