@@ -9,7 +9,6 @@ if [[ $OSTYPE == darwin* ]]; then
     # Homebrew
     if [ -d "/opt/homebrew/bin" ]; then
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
-        FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
     fi
 
     if [ -f $HOME/.homebrew_github_api_token ]; then
