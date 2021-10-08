@@ -6,6 +6,9 @@ alias n='echo -n ""'
 
 # MacOS
 if [[ $OSTYPE == darwin* ]]; then
+    # Additional path
+    export PATH="/usr/local/sbin:$PATH"
+
     # Homebrew
     if [ -d "/opt/homebrew/bin" ]; then
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
@@ -14,9 +17,6 @@ if [[ $OSTYPE == darwin* ]]; then
     if [ -f $HOME/.homebrew_github_api_token ]; then
         HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
     fi
-
-    # Additional path
-    export PATH="/usr/local/sbin:$PATH"
 
     # zsh-autosuggestions
     if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
