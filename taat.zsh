@@ -126,7 +126,13 @@ fi
 
 # Rust
 if [ -d "$HOME/.cargo" ]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
+    case ":${PATH}:" in
+    *:"$HOME/.cargo/bin":*)
+        ;;
+    *)
+        export PATH="$HOME/.cargo/bin:$PATH"
+        ;;
+    esac
 fi
 
 
