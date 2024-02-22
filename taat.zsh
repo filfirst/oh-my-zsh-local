@@ -35,8 +35,8 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 
     # Python
-    if [ -d "$HOME/Library/Python/3.11" ]; then
-        export PATH="$HOME/Library/Python/3.11/bin:$PATH"
+    if [ -d "$HOME/Library/Python/3.12" ]; then
+        export PATH="$HOME/Library/Python/3.12/bin:$PATH"
     fi
 
     # Java
