@@ -10,6 +10,12 @@ if [[ $OSTYPE == darwin* ]]; then
     export PATH="/usr/local/sbin:$PATH"
 
     # Homebrew
+    if [ -d "/opt/homebrew/share/zsh/site-functions" ]; then
+        fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
+        autoload -Uz compinit
+        compinit
+    fi
+
     if [ -d "/opt/homebrew/bin" ]; then
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
     fi
@@ -35,8 +41,8 @@ if [[ $OSTYPE == darwin* ]]; then
     fi
 
     # Python
-    if [ -d "$HOME/Library/Python/3.12" ]; then
-        export PATH="$HOME/Library/Python/3.12/bin:$PATH"
+    if [ -d "$HOME/Library/Python/3.13" ]; then
+        export PATH="$HOME/Library/Python/3.13/bin:$PATH"
     fi
 
     # Java
