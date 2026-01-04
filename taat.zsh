@@ -131,14 +131,14 @@ if [ -d "$HOME/opt/node" ]; then
 fi
 
 # Rust
-if [ -d "$HOME/.cargo" ]; then
-    case ":${PATH}:" in
-    *:"$HOME/.cargo/bin":*)
-        ;;
-    *)
-        export PATH="$HOME/.cargo/bin:$PATH"
-        ;;
-    esac
+if [ -d "$HOME/opt/rust" ]; then
+    export RUST_HOME=$HOME/opt/rust
+    export RUSTUP_HOME=$HOME/opt/rust/rustup
+    export CARGO_HOME=$HOME/opt/rust/cargo
+
+    if [ -f "$CARGO_HOME/env" ]; then
+        source "$CARGO_HOME/env"
+    fi
 fi
 
 
