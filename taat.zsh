@@ -20,29 +20,20 @@ if [[ $OSTYPE == darwin* ]]; then
         export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
     fi
 
-    if [ -f $HOME/.homebrew_github_api_token ]; then
-        HOMEBREW_GITHUB_API_TOKEN=$(cat $HOME/.homebrew_github_api_token)
-    fi
-
     # zsh-autosuggestions
-    if [ -f /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
-        source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-    elif [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
+    if [ -f /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then
         source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
     fi
 
     # zsh-syntax-highlighting
-    if [ -f /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
-        source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-        ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
-    elif [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+    if [ -f /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
         source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
         ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
     fi
 
     # Python
-    if [ -d "$HOME/Library/Python/3.13" ]; then
-        export PATH="$HOME/Library/Python/3.13/bin:$PATH"
+    if [ -d "$HOME/Library/Python/3.14" ]; then
+        export PATH="$HOME/Library/Python/3.14/bin:$PATH"
     fi
 
     # Java
@@ -51,25 +42,19 @@ if [[ $OSTYPE == darwin* ]]; then
         export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
     fi
 
-    # Scala
-    if [ -d "/usr/local/opt/scala" ]; then
-        export SCALA_HOME=/usr/local/opt/scala/libexec
-    elif [ -d "/opt/homebrew/opt/scala" ]; then
-        export SCALA_HOME=/opt/homebrew/opt/scala/libexec
+    # Gradle
+    if [ -d "/opt/homebrew/opt/gradle" ]; then
+        export GRADLE_HOME=/opt/homebrew/opt/gradle/libexec
     fi
 
     # Groovy
-    if [ -d "/usr/local/opt/groovy" ]; then
-        export GROOVY_HOME=/usr/local/opt/groovy/libexec
-    elif [ -d "/opt/homebrew/opt/groovy" ]; then
+    if [ -d "/opt/homebrew/opt/groovy" ]; then
         export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
     fi
 
-    # Gradle
-    if [ -d "/usr/local/opt/gradle" ]; then
-        export GRADLE_HOME=/usr/local/opt/gradle/libexec
-    elif [ -d "/opt/homebrew/opt/gradle" ]; then
-        export GRADLE_HOME=/opt/homebrew/opt/gradle/libexec
+    # Scala
+    if [ -d "/opt/homebrew/opt/scala" ]; then
+        export SCALA_HOME=/opt/homebrew/opt/scala/libexec
     fi
 
     # Haskell
@@ -114,6 +99,17 @@ if [[ $OSTYPE == linux* ]]; then
 fi
 
 
+# Rust
+if [ -d "$HOME/opt/rust" ]; then
+    export RUST_HOME=$HOME/opt/rust
+    export RUSTUP_HOME=$HOME/opt/rust/rustup
+    export CARGO_HOME=$HOME/opt/rust/cargo
+
+    if [ -f "$CARGO_HOME/env" ]; then
+        source "$CARGO_HOME/env"
+    fi
+fi
+
 # Go
 if [ -d "$HOME/opt/go" ]; then
     if [ -z "${GOPATH}" ]; then
@@ -128,17 +124,6 @@ fi
 # Node
 if [ -d "$HOME/opt/node" ]; then
     export PATH=$HOME/opt/node/bin:$PATH
-fi
-
-# Rust
-if [ -d "$HOME/opt/rust" ]; then
-    export RUST_HOME=$HOME/opt/rust
-    export RUSTUP_HOME=$HOME/opt/rust/rustup
-    export CARGO_HOME=$HOME/opt/rust/cargo
-
-    if [ -f "$CARGO_HOME/env" ]; then
-        source "$CARGO_HOME/env"
-    fi
 fi
 
 
