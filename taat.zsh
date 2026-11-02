@@ -1,14 +1,12 @@
 export LSCOLORS=
 
-
 alias n='echo -n ""'
+
+typeset -U path PATH fpath FPATH
 
 
 # MacOS
 if [[ $OSTYPE == darwin* ]]; then
-    # Additional path
-    export PATH="/usr/local/sbin:$PATH"
-
     # Homebrew
     if [ -d "/opt/homebrew/share/zsh/site-functions" ]; then
         fpath=(/opt/homebrew/share/zsh/site-functions $fpath)
@@ -31,35 +29,23 @@ if [[ $OSTYPE == darwin* ]]; then
         ZSH_HIGHLIGHT_STYLES[comment]='fg=8,bold'
     fi
 
-    # Python
-    if [ -d "$HOME/Library/Python/3.14" ]; then
-        export PATH="$HOME/Library/Python/3.14/bin:$PATH"
-    fi
-
     # Java
-    /usr/libexec/java_home > /dev/null 2>&1
-    if [ $? -eq 0 ]; then
-        export JAVA_HOME=$(/usr/libexec/java_home 2> /dev/null)
+    if [[ -z $JAVA_HOME ]]; then
+        if JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null); then
+            export JAVA_HOME
+        else
+            unset JAVA_HOME
+        fi
     fi
 
     # Gradle
     if [ -d "/opt/homebrew/opt/gradle" ]; then
-        export GRADLE_HOME=/opt/homebrew/opt/gradle/libexec
+        export GRADLE_HOME=${GRADLE_HOME:-/opt/homebrew/opt/gradle/libexec}
     fi
 
     # Groovy
     if [ -d "/opt/homebrew/opt/groovy" ]; then
-        export GROOVY_HOME=/opt/homebrew/opt/groovy/libexec
-    fi
-
-    # Scala
-    if [ -d "/opt/homebrew/opt/scala" ]; then
-        export SCALA_HOME=/opt/homebrew/opt/scala/libexec
-    fi
-
-    # Haskell
-    if [ -d "$HOME/Library/Haskell" ]; then
-        export PATH="$HOME/Library/Haskell/bin:$PATH"
+        export GROOVY_HOME=${GROOVY_HOME:-/opt/homebrew/opt/groovy/libexec}
     fi
 fi
 
@@ -112,18 +98,31 @@ fi
 
 # Go
 if [ -d "$HOME/opt/go" ]; then
-    if [ -z "${GOPATH}" ]; then
-        export GOPATH=$HOME/opt/go
-    fi
+    export GOPATH=${GOPATH:-$HOME/opt/go}
 fi
 
-if type "go" > /dev/null; then
-    export PATH="${${$(go env GOPATH)}//://bin:}/bin:$PATH"
+if (( $+commands[go] )); then
+    () {
+        local gobin gopath
+        (cd / && go env GOBIN GOPATH) | { read -r gobin; read -r gopath }
+        local -a gp=(${(s.:.)gopath})
+        (( $#gp )) && export GOPATH=${(j.:.)gp}
+        path=($gobin ${^gp}/bin $path)
+    }
 fi
 
 # Node
 if [ -d "$HOME/opt/node" ]; then
     export PATH=$HOME/opt/node/bin:$PATH
+fi
+
+# Lean
+if [ -d "$HOME/opt/elan" ]; then
+    export ELAN_HOME=$HOME/opt/elan
+
+    if [ -f "$ELAN_HOME/env" ]; then
+        source "$ELAN_HOME/env"
+    fi
 fi
 
 
