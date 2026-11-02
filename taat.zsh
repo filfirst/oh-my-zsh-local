@@ -86,22 +86,24 @@ fi
 
 
 # Rust
-if [ -d "$HOME/opt/rust" ]; then
-    export RUST_HOME=$HOME/opt/rust
-    export RUSTUP_HOME=$HOME/opt/rust/rustup
-    export CARGO_HOME=$HOME/opt/rust/cargo
-
-    if [ -f "$CARGO_HOME/env" ]; then
-        source "$CARGO_HOME/env"
-    fi
+if [[ -d $HOME/opt/rust ]]; then
+    export RUSTUP_HOME=${RUSTUP_HOME:-$HOME/opt/rust/rustup}
+    export CARGO_HOME=${CARGO_HOME:-$HOME/opt/rust/cargo}
 fi
+
+() {
+    local cargo_bin=${CARGO_HOME:-$HOME/.cargo}/bin
+    if [[ -d $cargo_bin ]] || (( $+commands[cargo] )); then
+        path=($cargo_bin $path)
+    fi
+}
 
 # Go
-if [ -d "$HOME/opt/go" ]; then
-    export GOPATH=${GOPATH:-$HOME/opt/go}
-fi
-
 if (( $+commands[go] )); then
+    if [ -d "$HOME/opt/go" ]; then
+        export GOPATH=${GOPATH:-$HOME/opt/go}
+    fi
+
     () {
         local gobin gopath
         (cd / && go env GOBIN GOPATH) | { read -r gobin; read -r gopath }
@@ -117,13 +119,16 @@ if [ -d "$HOME/opt/node" ]; then
 fi
 
 # Lean
-if [ -d "$HOME/opt/elan" ]; then
-    export ELAN_HOME=$HOME/opt/elan
-
-    if [ -f "$ELAN_HOME/env" ]; then
-        source "$ELAN_HOME/env"
-    fi
+if [[ -d $HOME/opt/elan ]]; then
+    export ELAN_HOME=${ELAN_HOME:-$HOME/opt/elan}
 fi
+
+() {
+    local elan_bin=${ELAN_HOME:-$HOME/.elan}/bin
+    if [[ -d $elan_bin ]] || (( $+commands[elan] )); then
+        path=($elan_bin $path)
+    fi
+}
 
 
 # User bin paths
